@@ -17,11 +17,18 @@ public class Activity2 extends AppCompatActivity {
     private EditText names;
     private Button next;
     private String members;
-    private ArrayList<String> globalnames = new ArrayList<String>();
+   // private ArrayList<String> globalnames;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
+
+        final GlobalClass gc = (GlobalClass) getApplicationContext();
+
+        //globalnames= new ArrayList<String>();
+       // globalnames = gc.getArrMems();
 
         add = (Button) findViewById(R.id.Button2);
         names = (EditText) findViewById(R.id.editText);
@@ -40,11 +47,16 @@ public class Activity2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 members = names.getText().toString();
-                globalnames.add(members);
-                Toast.makeText(getApplicationContext(),"Hello Javatpoint", Toast.LENGTH_SHORT).show();
-                for(int i=0;i<globalnames.size();i++){
-                    Log.d("item", globalnames.get(i).toString());
-                }
+                gc.addItem(members);
+                hideItAgain();
+                //globalnames.add(members);
+
+                //savearlistfunc();
+               // globalnames.add(members);
+                //Toast.makeText(getApplicationContext(),"Hello Javatpoint", Toast.LENGTH_SHORT).show();
+                //for(int i=0;i<globalnames.size();i++){
+                  //  Log.d("item", globalnames.get(i).toString());
+                //}
             }
         });
 
@@ -55,4 +67,19 @@ public class Activity2 extends AppCompatActivity {
         names.setVisibility(View.VISIBLE);
         next.setVisibility(View.VISIBLE);
     }
+
+    public void hideItAgain()
+    {
+        names.setText(" ");
+        names.setVisibility(View.INVISIBLE);
+        next.setVisibility(View.INVISIBLE);
+        Toast.makeText(getApplicationContext(),"A D D E D", Toast.LENGTH_SHORT).show();
+    }
+/*
+    public void savearlistfunc()
+    {
+        GlobalClass gc = null;
+        gc.setArrMems(globalnames);
+    }
+    */
 }

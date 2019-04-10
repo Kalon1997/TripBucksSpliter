@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private Button button;
+    private String database_name;
 
 
     @Override
@@ -19,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final GlobalClass gc = (GlobalClass) getApplicationContext();
+
+        //database_name = gc.getDbname();
         //String tname;
         button = (Button) findViewById(R.id.tripCreate);
         final EditText edit = (EditText)findViewById(R.id.tripName);
@@ -28,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 text.setText("TRIP CREATED: "+edit.getText());
+                database_name=edit.getText().toString();
                 edit.setText(" ");
+                gc.setDbname(database_name);
                 openActivity2();
             }
         });
