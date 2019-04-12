@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import static java.util.logging.Logger.global;
 
 public class Activity2 extends AppCompatActivity {
+    DatabaseHelper mydb;
     private Button add;
     private EditText names;
     private Button next;
@@ -24,7 +25,7 @@ public class Activity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
-
+        mydb = new DatabaseHelper(this);
         final GlobalClass gc = (GlobalClass) getApplicationContext();
 
         //globalnames= new ArrayList<String>();
@@ -48,6 +49,7 @@ public class Activity2 extends AppCompatActivity {
             public void onClick(View view) {
                 members = names.getText().toString();
                 gc.addItem(members);
+                mydb.insertData(members);
                 hideItAgain();
                 //globalnames.add(members);
 
