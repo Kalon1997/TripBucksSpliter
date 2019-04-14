@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,7 @@ public class Activity2 extends AppCompatActivity {
     private EditText names;
     private Button next;
     private String members;
+    private Button save_next;
    // private ArrayList<String> globalnames;
 
 
@@ -30,7 +32,7 @@ public class Activity2 extends AppCompatActivity {
 
         //globalnames= new ArrayList<String>();
        // globalnames = gc.getArrMems();
-
+        save_next = (Button) findViewById(R.id.Button4);
         add = (Button) findViewById(R.id.Button2);
         names = (EditText) findViewById(R.id.editText);
         next = (Button) findViewById(R.id.Button3);
@@ -62,6 +64,13 @@ public class Activity2 extends AppCompatActivity {
             }
         });
 
+        save_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoActivity3();
+            }
+        });
+
     }
 
     public void dispIt()
@@ -84,4 +93,12 @@ public class Activity2 extends AppCompatActivity {
         gc.setArrMems(globalnames);
     }
     */
+
+
+    public void gotoActivity3()
+    {
+        Intent intent = new Intent(this,ActivityThree.class);
+        startActivity(intent);
+    }
+
 }
