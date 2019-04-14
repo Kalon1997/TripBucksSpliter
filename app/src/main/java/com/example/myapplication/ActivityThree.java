@@ -2,6 +2,8 @@ package com.example.myapplication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -29,8 +31,25 @@ public class ActivityThree extends AppCompatActivity {
 
         lst.setAdapter(arrayAdapter);
 
-
+        lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                enterPaid();
+            }
+        });
 
 
     }
+
+    public void enterPaid()
+    {
+        BoxDialog boxDialog = new BoxDialog();
+        boxDialog.show(getSupportFragmentManager(),"box dialog");
+
+    }
 }
+
+
+//android activity to list all the tables
+//   https://stackoverflow.com/questions/9345939/simply-populate-database-table-names-in-android-listview
+//listview of table names of a database android
