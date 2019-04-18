@@ -6,8 +6,18 @@ import java.util.ArrayList;
 
 public class GlobalClass extends Application {
     private String dbname;
+    private String currTable;      //<----- most important
     private ArrayList<String> all_the_table_names = new ArrayList<String>();
     private ArrayList<String> arrMems = new ArrayList<String>();
+
+    public String getCurrTable() {
+        return currTable;
+    }    //<--- imp
+
+    public void setCurrTable(String currTable) {
+        this.currTable = currTable;
+    }    ////<--- imp
+
 
 
     public ArrayList<String> getAll_the_table_names() {

@@ -21,7 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //final GlobalClass gc = (GlobalClass) getApplicationContext();
 
-    public static final String TABLE_NAME = "Trip";
+   // public static final String TABLE_NAME = "Trip";
 
    // public DatabaseHelper(@androidx.annotation.Nullable Context context, @androidx.annotation.Nullable String name, @androidx.annotation.Nullable SQLiteDatabase.CursorFactory factory, int version) {
    public DatabaseHelper(Context context) {
@@ -42,17 +42,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //onCreate(db);
     }
 
-    public boolean insertData(String name)
+    public long insertData(String tname, String name)
     {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
+       ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2,name);
-        final long insert = db.insert(TABLE_NAME, null, contentValues);
-        if(insert == -1)
-            return false;
-        else
-            return true;
+       return db.insert(tname, null, contentValues);
+        //db.execSQL("INSERT INTO"+tname+"(MEMBERS) VALUES("+name+")");
     }
+
+
+
 
 
     public void createUniqueTable(String table_name) {

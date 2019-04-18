@@ -12,16 +12,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private Button del;
+    //private Button del;
     private Button button;
     private String table_name;
-    private ArrayList<String> allTables;
+    private ArrayList<String> allTables;       // <<<<-------------
     DatabaseHelper mydb;
     private ListView tlist;
+    private String impp;
    // private String t = "NITTE";
 
     @Override
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         final GlobalClass gc = (GlobalClass) getApplicationContext();
 
         table_name = gc.getDbname();
-        allTables=gc.getAll_the_table_names();
+       // allTables=gc.getAll_the_table_names();
         //String tname;
         button = (Button) findViewById(R.id.tripCreate);
         final EditText edit = (EditText)findViewById(R.id.tripName);
@@ -75,11 +77,13 @@ public class MainActivity extends AppCompatActivity {
             }
             else
             {
-                allTables.add(s);
+                //allTables.add(s);
+                gc.addTables(s);
             }
         }
 
 
+        allTables=gc.getAll_the_table_names();
 
 
 
@@ -95,8 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
+        allTables.remove("sqlite_sequence");
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,allTables);
 
@@ -106,6 +109,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //enterPaid();   //activity3 kind of
+                //Toast.makeText(MainActivity.this, allTables.get(position), Toast.LENGTH_SHORT).show();
+                gc.setCurrTable(allTables.get(position));
+                goToAct3();
             }
         });
 
@@ -113,6 +119,9 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                impp=edit.getText().toString();
+                gc.setCurrTable(impp);
+
                 text.setText("TRIP CREATED: "+edit.getText());
                 table_name=edit.getText().toString();
                 edit.setText(" ");
@@ -167,6 +176,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void goToAct3()
+    {
+        Intent intent = new Intent(this,ActivityThree.class);
+        startActivity(intent);
+    }
 
 }
 
