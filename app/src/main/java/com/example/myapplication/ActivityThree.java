@@ -16,8 +16,9 @@ import java.util.ArrayList;
 
 import static com.example.myapplication.DatabaseHelper.COL_2;
 
-public class ActivityThree extends AppCompatActivity {
+public class ActivityThree extends AppCompatActivity implements BoxDialog.ExampleDialogListener {
 
+    private String sv;
     private Button split;
     private ListView listOfMembers;
     private String imppp;
@@ -42,7 +43,7 @@ public class ActivityThree extends AppCompatActivity {
         final GlobalClass globalClass = (GlobalClass)getApplicationContext();
         imppp=globalClass.getCurrTable();
 
-        disp_curr_table.setText(imppp);
+        //disp_curr_table.setText(sv);
 
         ArrayList<String> naams = new ArrayList<>();   //local arraylist for memebers
 
@@ -62,17 +63,31 @@ public class ActivityThree extends AppCompatActivity {
         ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,naams);
 
         listOfMembers.setAdapter(arrayAdapter);
-/*
+
         listOfMembers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                openDialog();
 
             }
         });
-*/
+
     }
 
+
+    public void openDialog() {
+        BoxDialog exampleDialog = new BoxDialog();
+        exampleDialog.show(getSupportFragmentManager(), "example dialog");
+    }
+
+    @Override
+    public void applyTexts(String svd) {
+        //textViewUsername.setText(username);
+        //textViewPassword.setText(password);
+        //sv=svd;
+        disp_curr_table.setText(svd);
+
+    }
 }
 
 

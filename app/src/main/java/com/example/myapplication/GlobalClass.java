@@ -10,6 +10,16 @@ public class GlobalClass extends Application {
     private ArrayList<String> all_the_table_names = new ArrayList<String>();
     private ArrayList<String> arrMems = new ArrayList<String>();
 
+    public String getBucks() {
+        return bucks;
+    }
+
+    public void setBucks(String bucks) {
+        this.bucks = bucks;
+    }
+
+    private String bucks;
+
     public String getCurrTable() {
         return currTable;
     }    //<--- imp

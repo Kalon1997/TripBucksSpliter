@@ -5,8 +5,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.ArrayList;
-
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 
@@ -25,9 +23,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
    // public DatabaseHelper(@androidx.annotation.Nullable Context context, @androidx.annotation.Nullable String name, @androidx.annotation.Nullable SQLiteDatabase.CursorFactory factory, int version) {
    public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+       super(context, DATABASE_NAME,null,1);
         SQLiteDatabase db = this.getWritableDatabase();
     }
+
 
 
     @Override

@@ -146,6 +146,9 @@ public class MainActivity extends AppCompatActivity {
                     mydb.deleteAllTables(s);
                     i=i-1;
                 }
+                allTables.clear();
+                //reFresh();
+
                 //for (String temp : allTables) {
                    // mydb.deleteAllTables(t);
                 //}
@@ -169,6 +172,8 @@ public class MainActivity extends AppCompatActivity {
 
         */
     }
+
+
 
     public void openActivity2() {
         Intent intent = new Intent(this,Activity2.class);
