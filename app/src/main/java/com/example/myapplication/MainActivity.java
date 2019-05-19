@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
                 while(i>0)
                 {
                     String s = allTables.get(i);
-                    text.setText(s);
+                    text.setText("Restart the App");
                     mydb.deleteAllTables(s);
                     i=i-1;
                 }
