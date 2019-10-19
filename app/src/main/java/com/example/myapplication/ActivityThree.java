@@ -209,7 +209,7 @@ public class ActivityThree extends AppCompatActivity implements BoxDialog.Exampl
                 }
 
 
-
+                disp_curr_table.setText(" ");
 
 
             }

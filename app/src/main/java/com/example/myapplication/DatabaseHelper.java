@@ -244,6 +244,10 @@ myDB.update(TableName, cv, "_id="+id, null);
 
 
 
+//        SELECT AVG( advance_amount )
+//            FROM orders;
+
+
         return avg;
     }
 
